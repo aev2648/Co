@@ -56,14 +56,29 @@ class Wearable {
         this.connection = null;
     }
     
-    registerNeighbor(Wearable neighbor){
-        this.neighbor = neighbor; 
-    }
-    
     
 }
 
-var warables = [];
+var wearables = []; //list of all wearables 
+
+//sends list of wearables that are on or connected
+getConnectedWearables(req, res){
+    var connectedWearables = wearables.filter((d) => d.state == wearableStates.connected || d.state == wearableStates.on);
+    
+    
+    /*
+    -----FORMATE CONNECTED & ON WEARABLES-----
+    */
+    
+    
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    response.write(connectWearablesResponse);
+    response.end();
+}
+
+initializeWearble(){
+    wearables = [];
+}
 
 
 
